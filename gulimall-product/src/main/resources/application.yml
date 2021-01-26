@@ -5,7 +5,11 @@ spring:
     url: jdbc:mysql://localhost:3307/gulimall_pms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
 mybatis-plus:
-  mapper-locations: classpath*:/mapper/**/*.xml
+  mapper-locations: classpath:/mapper/**/*.xml
   global-config:
     db-config:
-      id-type: auto  #主键自增属性
+      id-type: auto
+server:
+  port: 10001
+
+

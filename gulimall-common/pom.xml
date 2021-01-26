@@ -47,11 +47,11 @@
             <version>2.6</version>
         </dependency>
 
-        <dependency>
+  <!--      <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>2.5</version>
-        </dependency>
+        </dependency>  加了这个依赖后tomcat启动不了-->
         <!--数据库mysql驱动依赖-->
         <dependency>
             <groupId>mysql</groupId>

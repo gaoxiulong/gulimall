@@ -11,6 +11,7 @@ public class GulimallProductApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GulimallProductApplication.class, args);
 
+		System.out.println("GulimallProductApplication 成功启动！");
 	}
 
 	/**	见common
