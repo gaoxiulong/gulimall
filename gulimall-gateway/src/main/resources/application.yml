@@ -13,3 +13,27 @@ spring:
         uri: https://www.qq.com
         predicates:
         - Query=url,qq
+
+      #商品管理重写路由，过滤去掉api
+      - id: product_route
+        uri: lb://gulimall-product
+        predicates:
+        - Path=/api/product/**
+        filters:
+        - RewritePath=/api(?<segment>/?.*), $\{segment}
+
+      #后台管理重写路由，过滤去掉api，同时加上renren-fast
+      - id: admin_route
+        uri: lb://renren-fast
+        predicates:
+        - Path=/api/**
+        filters:
+        - RewritePath=/api(?<segment>/?.*), /renren-fast/$\{segment}
+
+##前端调用后台管理加上api
+
+##http://localhost:88/api/product/category/list/tree 转换为 http://localhost:10001/product/category/list/tree
+
+
+
+
