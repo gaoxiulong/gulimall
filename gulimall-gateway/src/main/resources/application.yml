@@ -22,6 +22,14 @@ spring:
         filters:
         - RewritePath=/api(?<segment>/?.*), $\{segment}
 
+      #第三方服务oss重写路由，过滤去掉/api/thirdparty/
+      - id: third_party_route
+        uri: lb://gulimall-third-party
+        predicates:
+        - Path=/api/thirdparty/**
+        filters:
+        - RewritePath=/api/thirdparty/(?<segment>/?.*), /$\{segment}
+
       #后台管理重写路由，过滤去掉api，同时加上renren-fast
       - id: admin_route
         uri: lb://renren-fast

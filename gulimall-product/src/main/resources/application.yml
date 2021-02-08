@@ -8,6 +8,11 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+    alicloud:  #阿里云oss配置
+      access-key: LTAI4Fykx4yKZr1LHf15eJX5
+      secret-key: zhOs919PewfJGaXkU9vaqewvWzDoHO
+      oss:
+        endpoint: oss-cn-beijing.aliyuncs.com
   application:
     name: gulimall-product
 mybatis-plus:
@@ -15,7 +20,12 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
+      logic-delete-value: 1
+      logic-not-delete-value: 0
 server:
   port: 10001
+
+
+
 
 
