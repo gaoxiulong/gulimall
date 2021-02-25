@@ -1,11 +1,11 @@
 package com.atguigu.gulimall.product.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
-import lombok.Data;
 
 /**
  * 属性分组
@@ -16,7 +16,7 @@ import lombok.Data;
  */
 @Data
 @TableName("pms_attr_group")
-public class AttrGroupEntity implements Serializable {
+public class AttrGroupEntity  implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -44,5 +44,11 @@ public class AttrGroupEntity implements Serializable {
 	 * 所属分类id
 	 */
 	private Long catelogId;
+
+	/**
+	 * 所属分类路径
+	 */
+	@TableField(exist = false)
+	private Long[] catelogPath;
 
 }
