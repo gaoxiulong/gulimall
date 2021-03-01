@@ -2,8 +2,10 @@ package com.atguigu.gulimall.product.controller;
 
 import com.atguigu.common.utils.PageUtils;
 import com.atguigu.common.utils.R;
+import com.atguigu.gulimall.product.entity.BrandEntity;
 import com.atguigu.gulimall.product.entity.CategoryBrandRelationEntity;
 import com.atguigu.gulimall.product.service.CategoryBrandRelationService;
+import com.atguigu.gulimall.product.vo.BrandVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
 
@@ -30,6 +33,31 @@ public class CategoryBrandRelationController {
     private CategoryBrandRelationService categoryBrandRelationService;
 
 
+    /**
+     * 发布商品之获取分类关联的品牌
+     * /product/categorybrandrelation/brands/list
+     * Controller处理流程：
+     * 1、Controller：处理请求，接收和校验数据
+     * 2、Service接收controller传来的数据，进行业务处理
+     * 3、Controller接收service处理完的数据，封装成页面指定的VO.
+     */
+    //1.接收请求
+    @GetMapping("/brands/list")
+    //2.数据校验
+    public R relationBrandsList(@RequestParam(value = "catId",required = true) Long catId){
+        //3、Controller接收service处理完的数据，封装成页面指定的VO.
+        //3.1接收service处理完的数据
+        List<BrandEntity> vos = categoryBrandRelationService.getBrandsByCatId(catId);
+        //3.2并将数据封装成页面指定BrandVo
+        List<BrandVo> collect = vos.stream().map(item -> {
+            BrandVo brandVo = new BrandVo();
+            brandVo.setBrandId(item.getBrandId());
+            brandVo.setBrandName(item.getName());
+            return brandVo;
+        }).collect(Collectors.toList());
+        //3.3返回数据给页面
+        return R.ok().put("data",collect);
+    }
 
     /**
      * 获取当前品牌关联的所有分类列表
