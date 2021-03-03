@@ -1,20 +1,16 @@
 package com.atguigu.gulimall.ware.controller;
 
+import com.atguigu.common.utils.PageUtils;
+import com.atguigu.common.utils.R;
+import com.atguigu.gulimall.ware.entity.PurchaseDetailEntity;
+import com.atguigu.gulimall.ware.service.PurchaseDetailService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.Arrays;
 import java.util.Map;
 
 //import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.atguigu.gulimall.ware.entity.PurchaseDetailEntity;
-import com.atguigu.gulimall.ware.service.PurchaseDetailService;
-import com.atguigu.common.utils.PageUtils;
-import com.atguigu.common.utils.R;
 
 
 
@@ -32,7 +28,7 @@ public class PurchaseDetailController {
     private PurchaseDetailService purchaseDetailService;
 
     /**
-     * 列表
+     * 列表-->修改模糊查询条件
      */
     @RequestMapping("/list")
   //  @RequiresPermissions("ware:purchasedetail:list")
