@@ -1,8 +1,8 @@
 spring:
   cloud:
     alicloud:  #阿里云oss配置
-      access-key: 139LTAI4Fykx4yKZr1LHf15eJX5
-      secret-key: zhOs919PewfJ130GaXkU9vaqewvWzDoHO
+      access-key: xxxx
+      secret-key: yyyy
       oss:
         endpoint: oss-cn-beijing.aliyuncs.com
         bucket: gulimall-ywst
